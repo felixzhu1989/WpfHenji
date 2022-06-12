@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "TmMeG/VDgw7imZ/+pbK14nnkYtl8yO6hF+6VSHm+rnXD+OpGYSWlVes4dHCudxvNu1IuUYHz0hqTk2Lx5F0sXw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfUiDemo.MaterialDesign\\WpfUiDemo.MaterialDesign.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\materialdesigncolors\\2.0.6\\materialdesigncolors.2.0.6.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\materialdesignthemes\\4.5.0\\materialdesignthemes.4.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
