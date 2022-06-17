@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="iconfont.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="LiveCharts">
+      <HintPath>LiveChart\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf">
+      <HintPath>LiveChart\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="iconfont.ttf" />
+    <Resource Include="logo.jpg" />
+    <Resource Include="microsoft.png" />
+  </ItemGroup>
+
+</Project>

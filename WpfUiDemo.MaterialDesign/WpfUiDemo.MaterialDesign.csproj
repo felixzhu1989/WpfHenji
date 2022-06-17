@@ -17,6 +17,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="LiveCharts">
+      <HintPath>LiveChart\LiveCharts.dll</HintPath>
+    </Reference>
+    <Reference Include="LiveCharts.Wpf">
+      <HintPath>LiveChart\LiveCharts.Wpf.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="iconfont.ttf" />
     <Resource Include="RE4YrNz.jpg" />
   </ItemGroup>
