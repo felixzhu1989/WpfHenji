@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfUiDemo.FreeUid1", "WpfUi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfUiDemo.FreeUid2", "WpfUiDemo.FreeUid2\WpfUiDemo.FreeUid2.csproj", "{765A754A-5081-48D4-86DB-D4203124240A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfUiDemo.Freeuid3", "WpfUiDemo.Freeuid3\WpfUiDemo.Freeuid3.csproj", "{EC5DB346-EE80-48C2-A574-F99F45C6BD75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfUiDemo.FreeUid3", "WpfUiDemo.Freeuid3\WpfUiDemo.FreeUid3.csproj", "{EC5DB346-EE80-48C2-A574-F99F45C6BD75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

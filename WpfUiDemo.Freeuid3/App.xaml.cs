@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace WpfUiDemo.Freeuid3
+namespace WpfUiDemo.FreeUid3
 {
     /// <summary>
     /// Interaction logic for App.xaml

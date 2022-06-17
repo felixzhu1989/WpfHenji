@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\WpfUiDemo.Freeuid3.csproj": {}
+    "E:\\CSharp\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\WpfUiDemo.FreeUid3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\WpfUiDemo.Freeuid3.csproj": {
+    "E:\\CSharp\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\WpfUiDemo.FreeUid3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\WpfUiDemo.Freeuid3.csproj",
-        "projectName": "WpfUiDemo.Freeuid3",
-        "projectPath": "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\WpfUiDemo.Freeuid3.csproj",
-        "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\obj\\",
+        "projectUniqueName": "E:\\CSharp\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\WpfUiDemo.FreeUid3.csproj",
+        "projectName": "WpfUiDemo.FreeUid3",
+        "projectPath": "E:\\CSharp\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\WpfUiDemo.FreeUid3.csproj",
+        "packagesPath": "C:\\Users\\felix.zhu\\.nuget\\packages\\",
+        "outputPath": "E:\\CSharp\\repos\\WpfHenji\\WpfUiDemo.Freeuid3\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\felix.zhu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -57,7 +60,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }
