@@ -1,0 +1,59 @@
+﻿<Application x:Class="Microsoft.ToDo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Microsoft.ToDo"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <Style TargetType="RadioButton">              
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type RadioButton}">
+                        <Grid Background="Transparent">
+                            <Border x:Name="border_back" />
+                            <Border x:Name="border_thick" Margin="5"/>
+                            <ContentPresenter />
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter Property="Background"
+                                        Value="LightGray"
+                                        TargetName="border_back" />
+                            </Trigger>
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+                                <Setter Property="Foreground"
+                                        Value="Green" />
+                                <Setter Property="FontWeight"
+                                        Value="Bold" />
+                                <Setter Property="Background"
+                                        Value="Green"
+                                        TargetName="border_back" />
+                                <Setter Property="Opacity"
+                                        Value="0.05"
+                                        TargetName="border_back" />
+                                <Setter Property="BorderThickness"
+                                        Value="2,0,0,0"
+                                        TargetName="border_thick" />
+                                <Setter Property="BorderBrush"
+                                        Value="Green"
+                                        TargetName="border_thick" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <!--iconfont字体图标-->
+        <Style x:Key="iconTextBlockStyle"
+               TargetType="TextBlock">
+            <Setter Property="FontSize"
+                    Value="22" />
+            <Setter Property="FontFamily"
+                    Value="/#iconfont" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+        </Style>
+    </Application.Resources>
+</Application>
