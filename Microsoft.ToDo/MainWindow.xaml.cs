@@ -21,6 +21,9 @@ using System.Windows.Markup;
 using System.Diagnostics;
 using System.Reflection;
 using System.Drawing;
+using System.Drawing.Imaging;
+using Microsoft.ToDo.ViewModels;
+using Microsoft.ToDo.Models;
 
 namespace Microsoft.ToDo
 {
@@ -32,6 +35,58 @@ namespace Microsoft.ToDo
         public MainWindow()
         {
             InitializeComponent();
+            //点击标题区域可以移动窗体
+            logo.MouseMove += (s, e) =>
+            {
+                if (e.LeftButton == MouseButtonState.Pressed) DragMove();
+            };
+            titleBar.MouseMove += (s, e) =>
+            {
+                if (e.LeftButton == MouseButtonState.Pressed) DragMove();
+            };
+            btnmin.Click += (s, e) => { WindowState = WindowState.Minimized; };
+            btnmax.Click += (s, e) =>
+            {
+                WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
+            };
+            btnclose.Click += async (s, e) =>
+            {
+                //var dialogResult = await _dialogHost.Question("温馨提示", $"确认退出系统吗?");
+               //if (dialogResult.Result != Prism.Services.Dialogs.ButtonResult.OK) return;
+                Close();
+            };
+        }
+
+
+        private void TextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                string inputValue = inputText.Text;
+                if (inputValue == "") return;
+
+                var vm = this.DataContext as MainViewModel;
+                vm.AddTaskInfo(inputValue);
+                inputText.Text = string.Empty;
+            }
+        }
+        private void ExpandColumn(TaskInfo task)
+        {
+            var cdf = grc.ColumnDefinitions;
+            if (cdf[1].Width == new GridLength(0))
+            {
+                cdf[1].Width = new GridLength(280);
+                btnmin.Foreground = new SolidColorBrush(Colors.Black);
+                btnmax.Foreground = new SolidColorBrush(Colors.Black);
+                btnclose.Foreground = new SolidColorBrush(Colors.Black);
+            }
+            else
+            {
+                cdf[1].Width = new GridLength(0);
+                btnmin.Foreground = new SolidColorBrush(Colors.White);
+                btnmax.Foreground = new SolidColorBrush(Colors.White);
+                btnclose.Foreground = new SolidColorBrush(Colors.White);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -55,10 +110,10 @@ namespace Microsoft.ToDo
                             string saveFilePath = @$"{AppDomain.CurrentDomain.BaseDirectory}Image\{Guid.NewGuid().ToString()}.png";
                             bitmap.Save(saveFilePath);
                         }
-                    //Baml2006Reader reader = new Baml2006Reader((Stream)entry.Value);
-                    //var win = XamlReader.Load(reader) as Window;
-                    //Debug.Print(win.Name);
-                });
+                        //Baml2006Reader reader = new Baml2006Reader((Stream)entry.Value);
+                        //var win = XamlReader.Load(reader) as Window;
+                        //Debug.Print(win.Name);
+                    });
                 }
                 catch
                 {

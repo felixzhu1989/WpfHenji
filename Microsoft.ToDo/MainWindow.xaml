@@ -9,19 +9,30 @@
         Title="MainWindow"
         Height="650"
         Width="1080"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        BorderThickness="0"
         WindowStartupLocation="CenterScreen"
-        xmlns:viewModel="clr-namespace:Microsoft.ToDo.ViewModels">
+        xmlns:viewModel="clr-namespace:Microsoft.ToDo.ViewModels"
+        xmlns:converter="clr-namespace:Microsoft.ToDo.Common.Converters"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors">
     <Window.DataContext>
         <viewModel:MainViewModel />
     </Window.DataContext>
-    <Grid>
+    <Window.Resources>
+        <converter:DisplayConverter x:Key="display" />
+        <converter:DisplayMultiConverter x:Key="displayMulti" />
+    </Window.Resources>
+    <Grid>        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="210" />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <!--DockPanel中最后一个元素填充剩余空间-->
         <DockPanel LastChildFill="True">
-            <TextBlock Text="Microsoft To Do"
+            <TextBlock x:Name="logo"
+                       Text="Microsoft To Do"
                        FontSize="22"
                        FontWeight="Bold"
                        Foreground="Gray"
@@ -60,7 +71,8 @@
                            Margin="10,0" />
             </DockPanel>
             <ListBox BorderThickness="0"
-                     ItemsSource="{Binding MenuItems}">
+                     ItemsSource="{Binding MenuModels}"
+                     SelectedItem="{Binding MenuModel}">
                 <!--ListBox样式，水平填充-->
                 <ListBox.ItemContainerStyle>
                     <Style TargetType="ListBoxItem">
@@ -74,12 +86,12 @@
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
                                     <Grid Background="Transparent">
-                                        <Border x:Name="border_back" />
+                                        <!--<Border x:Name="border_back" />
                                         <Border x:Name="border_thick"
-                                                Margin="5" />
+                                                Margin="5" />-->
                                         <ContentPresenter />
                                     </Grid>
-                                    <ControlTemplate.Triggers>
+                                    <!--<ControlTemplate.Triggers>
                                         <Trigger Property="IsMouseOver"
                                                  Value="True">
                                             <Setter Property="Background"
@@ -105,7 +117,7 @@
                                                     Value="{Binding BackColor}"
                                                     TargetName="border_thick" />
                                         </Trigger>
-                                    </ControlTemplate.Triggers>
+                                    </ControlTemplate.Triggers>-->
                                 </ControlTemplate>
                             </Setter.Value>
                         </Setter>
@@ -114,21 +126,427 @@
                 <!--ListBox子项数据模板-->
                 <ListBox.ItemTemplate>
                     <DataTemplate>
-                        <DockPanel Background="Transparent" LastChildFill="False">
-                            <TextBlock Text="{Binding Icon}"
-                                       Style="{StaticResource iconTextBlockStyle}"
-                                       Margin="10,0" />
-                            <TextBlock Text="{Binding Name}"
-                                       VerticalAlignment="Center" />
-                            <TextBlock Text="{Binding Count}"
-                                       FontWeight="Light"
-                                       DockPanel.Dock="Right"
-                                       VerticalAlignment="Center"
-                                       Margin="10,0" />
-                        </DockPanel>
+                        <RadioButton Command="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type local:MainWindow}},Path=DataContext.SelectedCommand,Mode=TwoWay}"
+                                     Style="{DynamicResource RadioButton}"
+                                     CommandParameter="{Binding}">
+                            <RadioButton.IsChecked>
+                                <Binding Path="IsSelected"
+                                         RelativeSource="{RelativeSource AncestorType=ListBoxItem}"
+                                         Mode="TwoWay" />
+                            </RadioButton.IsChecked>
+                            <DockPanel Background="Transparent"
+                                       LastChildFill="False">
+                                <TextBlock Text="{Binding IconFont}"
+                                           Style="{StaticResource iconTextBlockStyle}"
+                                           Margin="10,0" />
+                                <TextBlock Text="{Binding Title}"
+                                           VerticalAlignment="Center" />
+                                <TextBlock Text="{Binding Count}"
+                                           FontWeight="Light"
+                                           DockPanel.Dock="Right"
+                                           VerticalAlignment="Center"
+                                           Margin="10,0" />
+                            </DockPanel>
+                        </RadioButton>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
         </DockPanel>
+        <Grid Name="grc"
+              Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="0"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="70" />
+                <RowDefinition />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Border x:Name="titleBar"
+                    Grid.ColumnSpan="2"
+                    Background="{Binding MenuModel.BackColor}" />
+            <Border Background="{Binding MenuModel.BackColor}"
+                    Grid.Row="1"
+                    Grid.RowSpan="3"
+                    Grid.ColumnSpan="2"
+                    Opacity="0.5" />
+            <StackPanel Panel.ZIndex="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Grid.ColumnSpan="2">
+                <Button Name="btnmin"
+                        Style="{StaticResource btnTitleBar}"
+                        Content="─" />
+                <Button Name="btnmax"
+                        Style="{StaticResource btnTitleBar}"
+                        Content="☐" />
+                <Button Name="btnclose"
+                        Style="{StaticResource btnTitleBar}"
+                        Content="✕" />
+            </StackPanel>
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                <StackPanel HorizontalAlignment="Left"
+                            Margin="10,5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Name="ico"
+                                   Text="{Binding MenuModel.IconFont}"
+                                   Visibility="{Binding MenuModel.Display,Converter={StaticResource display}}"
+                                   Style="{StaticResource iconTextBlockStyle}"                                   
+                                   Foreground="White"
+                                   FontSize="30" />
+                        <TextBlock Name="tit"
+                                   Text="{Binding MenuModel.Title}"
+                                   Margin="5 0 0 0"
+                                   VerticalAlignment="Center"
+                                   Foreground="White"
+                                   FontWeight="Bold"
+                                   FontSize="22" />
+                    </StackPanel>
+                    <TextBlock Foreground="White"
+                               Margin="5,0"
+                               VerticalAlignment="Center">
+                        <TextBlock.Text>
+                            <MultiBinding Converter="{StaticResource displayMulti}">
+                                <Binding Path="Visibility"
+                                         ElementName="ico" />
+                                <Binding Path="Text"
+                                         ElementName="tit" />
+                            </MultiBinding>
+                        </TextBlock.Text></TextBlock>
+                </StackPanel>
+            </StackPanel>
+            <Grid Grid.Row="2">
+                <ItemsControl ItemsSource="{Binding MenuModel.TaskInfos}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <StackPanel />
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Name="border"
+                                    CornerRadius="10"
+                                    Margin="20,5"
+                                    VerticalAlignment="Center"
+                                    Height="50">
+                                <behavior:Interaction.Triggers>
+                                    <behavior:EventTrigger EventName="MouseLeftButtonDown">
+                                        <behavior:InvokeCommandAction Command="{Binding RelativeSource={RelativeSource FindAncestor,
+                                            AncestorType={x:Type local:MainWindow}},
+                                Path=DataContext.SelectedTaskCommand,Mode=TwoWay}"
+                                                               CommandParameter="{Binding}"></behavior:InvokeCommandAction>
+                                    </behavior:EventTrigger>
+                                </behavior:Interaction.Triggers>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="50" />
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="50" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="○"
+                                               Foreground="Black"
+                                               FontSize="40"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center" />
+                                    <StackPanel Grid.Column="1"
+                                                VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Content}"
+                                                   Foreground="Black" />
+                                        <TextBlock Text="任务"
+                                                   Foreground="Black" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="2"
+                                               Foreground="Black"
+                                               Text="☆"
+                                               FontSize="20"
+                                               HorizontalAlignment="Center"
+                                               VerticalAlignment="Center" />
+                                </Grid>
+                                <Border.Style>
+                                    <Style TargetType="{x:Type Border}">
+                                        <Style.Triggers>
+                                            <Trigger Property="IsMouseOver"
+                                                     Value="True">
+                                                <Setter Property="Background"
+                                                        Value="#DBDBDB" />
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver"
+                                                     Value="False">
+                                                <Setter Property="Background"
+                                                        Value="White" />
+                                            </Trigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+            <Border Grid.Row="3"
+                    Background="Black"
+                    Opacity="0.1"
+                    CornerRadius="10"
+                    Margin="10,5" />
+            <Border Grid.Row="3"
+                    Margin="10,5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="+"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="30"
+                               Foreground="White" />
+                    <TextBox Name="inputText"
+                             Grid.Column="1"
+                             KeyDown="TextBox_KeyDown">
+                        <TextBox.Resources>
+                            <VisualBrush x:Key="hinttext"
+                                         TileMode="None"
+                                         AlignmentX="Left"
+                                         Stretch="None">
+                                <VisualBrush.Visual>
+                                    <TextBlock FontStyle="Normal"
+                                               Text="添加任务" />
+                                </VisualBrush.Visual>
+                            </VisualBrush>
+                        </TextBox.Resources>
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="VerticalAlignment"
+                                        Value="Center" />
+                                <Setter Property="Foreground"
+                                        Value="White" />
+                                <Setter Property="FontSize"
+                                        Value="14" />
+                                <Setter Property="BorderThickness"
+                                        Value="0" />
+                                <Setter Property="Background"
+                                        Value="Transparent" />
+                                <Style.Triggers>
+                                    <Trigger Property="Text"
+                                             Value="">
+                                        <Setter Property="Background"
+                                                Value="{StaticResource hinttext}" />
+                                    </Trigger>
+                                    <Trigger Property="Text"
+                                             Value="{x:Null}">
+                                        <Setter Property="Background"
+                                                Value="{StaticResource hinttext}" />
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </Grid>
+            </Border>
+            
+            <Grid Background="White"
+                  Grid.Column="1"
+                  Grid.RowSpan="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="145" />
+                    <RowDefinition />
+                    <RowDefinition Height="55" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid Margin="0 50 0 0"
+                          VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="50" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="○"
+                                   Foreground="Black"
+                                   FontSize="40"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="1"
+                                   Text="{Binding Info.Content}"
+                                   Foreground="Black"
+                                   FontWeight="Bold"
+                                   FontSize="18"
+                                   VerticalAlignment="Center" />
+                        <TextBlock Grid.Column="2"
+                                   Foreground="Black"
+                                   Text="☆"
+                                   FontSize="20"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center" />
+                    </Grid>
+                    <StackPanel Grid.Row="1"
+                                Orientation="Horizontal"
+                                VerticalAlignment="Center">
+                        <TextBlock Text="&#xe600;"
+                                   Margin="15 0 0 0"
+                                   FontSize="22"
+                                   Foreground="#4876FF"
+                                   FontFamily="./Fonts/#iconfont" />
+                        <TextBlock Text="添加步骤"
+                                   Margin="15 0 0 0"
+                                   FontSize="16"
+                                   Foreground="#4876FF" />
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="1"
+                      Background="#F5F5F5">
+                    <StackPanel Margin="10">
+                        <Border Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#EAEAEA"
+                                Height="50">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="30" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="&#xe635;"
+                                           VerticalAlignment="Center"
+                                           Foreground="#4876FF"
+                                           FontFamily="./Fonts/#iconfont"
+                                           FontSize="30"
+                                           Margin="10 0 0 0" />
+                                <TextBlock Grid.Column="1"
+                                           Text="已添加到'我的一天'"
+                                           Foreground="#4876FF"
+                                           VerticalAlignment="Center"
+                                           FontSize="15" />
+                                <TextBlock Grid.Column="2"
+                                           Text="✕"
+                                           VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Border >
+                        <Border Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#EAEAEA"
+                                Height="150"
+                                Margin="0 8 0 0">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="&#xe624;"
+                                           VerticalAlignment="Center"
+                                           Foreground="#4876FF"
+                                           FontFamily="./Fonts/#iconfont"
+                                           FontSize="30"
+                                           Margin="10 0 0 0" />
+                                <TextBlock Grid.Row="1"
+                                           Text="&#xe6e1;"
+                                           VerticalAlignment="Center"
+                                           Foreground="#4876FF"
+                                           FontFamily="./Fonts/#iconfont"
+                                           FontSize="30"
+                                           Margin="10 0 0 0" />
+                                <TextBlock Grid.Row="2"
+                                           Text="&#xe623;"
+                                           VerticalAlignment="Center"
+                                           Foreground="#4876FF"
+                                           FontFamily="./Fonts/#iconfont"
+                                           FontSize="20"
+                                           Margin="15 0 0 0" />
+                                <TextBlock Grid.Column="1"
+                                           Text="提醒我"
+                                           Foreground="#4876FF"
+                                           VerticalAlignment="Center"
+                                           FontSize="15" />
+                                <TextBlock Grid.Column="1"
+                                           Grid.Row="1"
+                                           Text="今天到期"
+                                           Foreground="#4876FF"
+                                           VerticalAlignment="Center"
+                                           FontSize="15" />
+                                <TextBlock Grid.Column="1"
+                                           Grid.Row="2"
+                                           Text="工作日"
+                                           Foreground="#4876FF"
+                                           VerticalAlignment="Center"
+                                           FontSize="15" />
+                            </Grid>
+                        </Border>
+                        <Border Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#EAEAEA"
+                                Height="50"
+                                Margin="0 8 0 0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="&#xe628;"
+                                           VerticalAlignment="Center"
+                                           Foreground="#636363"
+                                           FontFamily="./Fonts/#iconfont"
+                                           FontSize="30"
+                                           Margin="10 0 0 0" />
+                                <TextBlock Grid.Column="1"
+                                           Text="添加文件"
+                                           Foreground="#636363"
+                                           VerticalAlignment="Center"
+                                           FontSize="15" />
+                            </Grid>
+                        </Border>
+                        <Border Background="White"
+                                BorderThickness="1"
+                                BorderBrush="#EAEAEA"
+                                Height="80"
+                                Margin="0 8 0 0">
+                            <TextBlock Grid.Column="1"
+                                       Text="添加备注"
+                                       Margin="10"
+                                       Foreground="#636363"
+                                       FontSize="15" />
+                        </Border>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="30" />
+                    </Grid.ColumnDefinitions>
+                    <Button Command="{Binding SelectedTaskCommand}"
+                            CommandParameter="{x:Null}"
+                            Content="&#xe60a;"
+                            Background="Transparent"
+                            Foreground="#636363"
+                            FontSize="14"
+                            BorderThickness="0"
+                            FontFamily="./Fonts/#iconfont" />
+                    <TextBlock Grid.Column="1"
+                               Text="创建于xx小时前"
+                               Foreground="#636363"
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               HorizontalAlignment="Center" />
+                    <Button Grid.Column="2"
+                            Content="&#xe610;"
+                            Background="Transparent"
+                            Foreground="#636363"
+                            FontSize="20"
+                            BorderThickness="0"
+                            FontFamily="./Fonts/#iconfont" />
+                </Grid>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

@@ -23,11 +23,11 @@
                             <Trigger Property="IsChecked"
                                      Value="True">
                                 <Setter Property="Foreground"
-                                        Value="Green" />
+                                        Value="{Binding BackColor}" />
                                 <Setter Property="FontWeight"
                                         Value="Bold" />
                                 <Setter Property="Background"
-                                        Value="Green"
+                                        Value="{Binding BackColor}"
                                         TargetName="border_back" />
                                 <Setter Property="Opacity"
                                         Value="0.05"
@@ -36,7 +36,7 @@
                                         Value="2,0,0,0"
                                         TargetName="border_thick" />
                                 <Setter Property="BorderBrush"
-                                        Value="Green"
+                                        Value="{Binding BackColor}"
                                         TargetName="border_thick" />
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -44,8 +44,21 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
-        <!--iconfont字体图标-->
+        <!--标题栏按钮-->
+        <Style  x:Key="btnTitleBar" TargetType="Button">
+            <Setter Property="Width"
+                    Value="45" />
+            <Setter Property="Height"
+                    Value="30" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="BorderThickness"
+                    Value="0" 
+                    />
+            <Setter Property="Background"
+                    Value="Transparent" />
+        </Style>
+            <!--iconfont字体图标-->
         <Style x:Key="iconTextBlockStyle"
                TargetType="TextBlock">
             <Setter Property="FontSize"
