@@ -5,8 +5,133 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfExtension"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow"
+        Height="800"
+        Width="1080"
+        xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors">
+    <Window.Resources>
+        <local:DisplayConverter x:Key="discv" />
+        <local:DisplayMultiConverter x:Key="dismulcv" />
+    </Window.Resources>
     <Grid>
-
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!--装饰器-->
+        <StackPanel x:Name="MyPanel"
+                    Margin="10"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left">
+            <Button x:Name="MyButton"
+                    Width="200"
+                    Height="40" />
+            <TextBlock Width="200"
+                       Height="40"
+                       Margin="10" />
+            <Image Source="/user.jpg"
+                   Width="40"
+                   Height="40" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Right">
+            <Button Width="100"
+                    Height="40"
+                    Content="添加装饰效果"
+                    Click="Button_Click"
+                    Margin="5" />
+            <Button Width="100"
+                    Height="40"
+                    Content="移除装饰效果"
+                    Click="Button_Click_1"
+                    Margin="5" />
+        </StackPanel>
+        <!--转换器-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <StackPanel>
+                <Grid>
+                    <TextBlock Text="0"
+                               Name="t1"
+                               FontSize="30" />
+                    <TextBlock Text="{Binding ElementName=t1,Path=Text,Converter={StaticResource discv}}"
+                               FontSize="30"
+                               HorizontalAlignment="Right" />
+                </Grid>
+                <Grid>
+                    <TextBlock Text="1"
+                               Name="t2"
+                               FontSize="30" />
+                    <TextBlock Text="{Binding ElementName=t2,Path=Text,Converter={StaticResource discv}}"
+                               FontSize="30"
+                               HorizontalAlignment="Right" />
+                </Grid>
+            </StackPanel>
+            <StackPanel  Grid.Column="1"
+                         Orientation="Horizontal"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center">
+                <Path>
+                    <Path.Data>
+                        <EllipseGeometry Center="40,40"
+                                         RadiusX="20"
+                                         RadiusY="20" />
+                    </Path.Data>
+                    <Path.Fill>
+                        <MultiBinding Converter="{StaticResource dismulcv}">
+                            <Binding ElementName="sliderR"
+                                     Path="Value" />
+                            <Binding ElementName="sliderG"
+                                     Path="Value" />
+                            <Binding ElementName="sliderB"
+                                     Path="Value" />
+                        </MultiBinding>
+                    </Path.Fill>
+                </Path>
+                <StackPanel>
+                    <Slider x:Name="sliderR"
+                            Minimum="0"
+                            Maximum="255"
+                            Width="400"
+                            Margin="5" />
+                    <Slider x:Name="sliderG"
+                            Minimum="0"
+                            Maximum="255"
+                            Width="400"
+                            Margin="5" />
+                    <Slider x:Name="sliderB"
+                            Minimum="0"
+                            Maximum="255"
+                            Width="400"
+                            Margin="5" />
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <!--Behavior行为-->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Center">
+            <TextBlock Text="Behaviors"
+                       VerticalAlignment="Center"
+                       Margin="10">
+                <behavior:Interaction.Behaviors>
+                    <local:EffectBehavior />
+                </behavior:Interaction.Behaviors></TextBlock>
+            <Button Content="Behaviors"
+                    Width="200"
+                    Height="40">
+                <behavior:Interaction.Behaviors>
+                    <local:EffectBehavior />
+                </behavior:Interaction.Behaviors>
+            </Button>
+        </StackPanel>        
     </Grid>
 </Window>

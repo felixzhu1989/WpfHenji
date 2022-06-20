@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfUiDemo.FreeUid4", "WpfUi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.ToDo", "Microsoft.ToDo\Microsoft.ToDo.csproj", "{3FE5A238-4D8D-4F2F-9A6F-C3985A071C59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfExtension", "WpfExtension\WpfExtension.csproj", "{65BF0747-C367-448C-A685-3B1C0DC2EA4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfExtension", "WpfExtension\WpfExtension.csproj", "{65BF0747-C367-448C-A685-3B1C0DC2EA4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAnimation", "WpfAnimation\WpfAnimation.csproj", "{00F0B917-AC26-42DC-9D66-BB72765F245C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{65BF0747-C367-448C-A685-3B1C0DC2EA4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65BF0747-C367-448C-A685-3B1C0DC2EA4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65BF0747-C367-448C-A685-3B1C0DC2EA4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00F0B917-AC26-42DC-9D66-BB72765F245C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00F0B917-AC26-42DC-9D66-BB72765F245C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00F0B917-AC26-42DC-9D66-BB72765F245C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00F0B917-AC26-42DC-9D66-BB72765F245C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

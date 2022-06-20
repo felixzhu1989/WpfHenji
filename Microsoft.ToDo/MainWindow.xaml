@@ -14,8 +14,7 @@
         BorderThickness="0"
         WindowStartupLocation="CenterScreen"
         xmlns:viewModel="clr-namespace:Microsoft.ToDo.ViewModels"
-        xmlns:converter="clr-namespace:Microsoft.ToDo.Common.Converters"
-        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:converter="clr-namespace:Microsoft.ToDo.Common.Converters"        
         xmlns:behavior="http://schemas.microsoft.com/xaml/behaviors">
     <Window.DataContext>
         <viewModel:MainViewModel />
