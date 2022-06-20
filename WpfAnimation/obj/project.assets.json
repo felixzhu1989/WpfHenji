@@ -8,23 +8,19 @@
     "net6.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\felix.zhu\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\CSharp\\repos\\WpfHenji\\WpfAnimation\\WpfAnimation.csproj",
+      "projectUniqueName": "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfAnimation\\WpfAnimation.csproj",
       "projectName": "WpfAnimation",
-      "projectPath": "E:\\CSharp\\repos\\WpfHenji\\WpfAnimation\\WpfAnimation.csproj",
-      "packagesPath": "C:\\Users\\felix.zhu\\.nuget\\packages\\",
-      "outputPath": "E:\\CSharp\\repos\\WpfHenji\\WpfAnimation\\obj\\",
+      "projectPath": "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfAnimation\\WpfAnimation.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfAnimation\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\felix.zhu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -67,7 +63,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

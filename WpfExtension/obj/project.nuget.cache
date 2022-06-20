@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "nG4ixb3nekuIWGAcDM9mspsy8k/J/Hp/BhwkKGot1S2mk7ygCQkMy5SS1/1iwGrjlMK7BM2hKPMyUOBSoc3n5Q==",
+  "dgSpecHash": "AB9VVDVQwBwx3wZX0cSrqHofqA5iLm+vCAo8pRqmzyOPKLntMZSc7sWY0OFb8YB7BX06Ydnqh+I92Q2YNp858w==",
   "success": true,
-  "projectFilePath": "E:\\CSharp\\repos\\WpfHenji\\WpfExtension\\WpfExtension.csproj",
+  "projectFilePath": "C:\\Users\\Administrator\\source\\repos\\WpfHenji\\WpfExtension\\WpfExtension.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\felix.zhu\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.31\\microsoft.xaml.behaviors.wpf.1.1.31.nupkg.sha512"
   ],
   "logs": []
 }
