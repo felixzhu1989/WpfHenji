@@ -23,7 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.ToDo", "Microsoft
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfExtension", "WpfExtension\WpfExtension.csproj", "{65BF0747-C367-448C-A685-3B1C0DC2EA4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfAnimation", "WpfAnimation\WpfAnimation.csproj", "{00F0B917-AC26-42DC-9D66-BB72765F245C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAnimation", "WpfAnimation\WpfAnimation.csproj", "{00F0B917-AC26-42DC-9D66-BB72765F245C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfLiveChart", "WpfLiveChart\WpfLiveChart.csproj", "{EA12CDB6-2522-49A3-828A-6A7BADEF14D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NlogTest", "NlogTest\NlogTest.csproj", "{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{00F0B917-AC26-42DC-9D66-BB72765F245C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00F0B917-AC26-42DC-9D66-BB72765F245C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00F0B917-AC26-42DC-9D66-BB72765F245C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA12CDB6-2522-49A3-828A-6A7BADEF14D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA12CDB6-2522-49A3-828A-6A7BADEF14D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA12CDB6-2522-49A3-828A-6A7BADEF14D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA12CDB6-2522-49A3-828A-6A7BADEF14D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
