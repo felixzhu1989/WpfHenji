@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfExtension", "WpfExtensio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfAnimation", "WpfAnimation\WpfAnimation.csproj", "{00F0B917-AC26-42DC-9D66-BB72765F245C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfLiveChart", "WpfLiveChart\WpfLiveChart.csproj", "{EA12CDB6-2522-49A3-828A-6A7BADEF14D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfLiveChart", "WpfLiveChart\WpfLiveChart.csproj", "{EA12CDB6-2522-49A3-828A-6A7BADEF14D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NlogTest", "NlogTest\NlogTest.csproj", "{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NlogTest", "NlogTest\NlogTest.csproj", "{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrismKeyPoints", "PrismKeyPoints\PrismKeyPoints.csproj", "{0112A5E9-3858-430B-9065-45F5274A0D10}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{997E49A5-EB52-4FF5-A7B3-AD42DA619A6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0112A5E9-3858-430B-9065-45F5274A0D10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0112A5E9-3858-430B-9065-45F5274A0D10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0112A5E9-3858-430B-9065-45F5274A0D10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0112A5E9-3858-430B-9065-45F5274A0D10}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

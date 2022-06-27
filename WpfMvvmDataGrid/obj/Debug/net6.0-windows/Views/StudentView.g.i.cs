@@ -69,7 +69,7 @@ namespace WpfMvvmDataGrid.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WpfMvvmDataGrid;V1.0.0.0;component/views/studentview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WpfMvvmDataGrid;component/views/studentview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\StudentView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
