@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Regions;
+using PrismKeyPoints.ViewModels;
 using PrismKeyPoints.Views;
 
 namespace PrismKeyPoints
@@ -27,6 +28,8 @@ namespace PrismKeyPoints
             //注册导航页面
             containerRegistry.RegisterForNavigation<ViewA>();
             containerRegistry.RegisterForNavigation<ViewB>();
+            //注册对话组件
+            containerRegistry.RegisterDialog<DialogView,DialogViewModel>();
         }
 
         protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)

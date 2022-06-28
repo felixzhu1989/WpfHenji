@@ -29,3 +29,5 @@ E:\CSharp\repos\WpfHenji\PrismKeyPoints\obj\Debug\net6.0-windows\Views\MainWindo
 E:\CSharp\repos\WpfHenji\PrismKeyPoints\obj\Debug\net6.0-windows\Views\ViewA.baml
 E:\CSharp\repos\WpfHenji\PrismKeyPoints\obj\Debug\net6.0-windows\Views\ViewB.g.cs
 E:\CSharp\repos\WpfHenji\PrismKeyPoints\obj\Debug\net6.0-windows\Views\ViewB.baml
+E:\CSharp\repos\WpfHenji\PrismKeyPoints\obj\Debug\net6.0-windows\Views\DialogView.g.cs
+E:\CSharp\repos\WpfHenji\PrismKeyPoints\obj\Debug\net6.0-windows\Views\DialogView.baml

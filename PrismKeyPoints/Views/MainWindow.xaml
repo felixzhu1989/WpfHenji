@@ -29,6 +29,12 @@
             <Button Content="ViewB"
                     Command="{Binding OpenBCommand}"
                     Margin="5" />
+            <Button Content="ShowDialog"
+                    Command="{Binding DialogCommand}"
+                    Margin="5" />
+            <TextBlock Text="{Binding DialogResult, StringFormat=弹窗结果：{0}}"
+                       Margin="5"
+                       VerticalAlignment="Center" />
         </StackPanel>
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ContentRegion" />
     </Grid>
